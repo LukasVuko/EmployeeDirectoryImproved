@@ -76,6 +76,7 @@ const closeBtn = document.getElementsByClassName("closeBtn")[0];
 main.addEventListener("click", e => {
   if ((e.target = card)) {
     openModal();
+    updateInnerModalUsingIndex(e.target.id);
   }
 });
 
@@ -95,6 +96,24 @@ function clickOutside(e) {
   if (e.target == modal) {
     modal.style.display = "none";
   }
+}
+
+function updateInnerModalUsingIndex(index) {
+  let employee = employeeTable[index];
+  const img = document.getElementById("modal-image");
+  img.src = employee.img;
+  const name = document.getElementById("modal-name");
+  name.innerText = employee.firstName + " " + employee.lastName;
+  const email = document.getElementById("modal-email");
+  email.innerText = employee.email;
+  const city = document.getElementById("modal-city");
+  city.innerText = employee.city;
+  const phone = document.getElementById("modal-phone");
+  phone.innerText = employee.phone;
+  const address = document.getElementById("modal-address");
+  address.innerText = employee.address;
+  const birthday = document.getElementById("modal-birthday");
+  birthday.innerText = employee.birthday;
 }
 
 // ------------------------------------------------------------------------------------------------------------------------ //
