@@ -87,13 +87,25 @@ String.prototype.capitalize = function() {
 
 const main = document.getElementById("main");
 const modal = document.getElementById("simpleModal");
-const card = document.getElementsByClassName("card");
 const closeBtn = document.getElementsByClassName("closeBtn")[0];
 
+const cardCollection = document.querySelectorAll(".card");
+
 // Event listeners
+// main.addEventListener("click", e => {
+//   console.log(event.target.className);
+// });
+
+// cardCollection.forEach(function(card) {
+//   card.addEventListener("click", e => {
+//     openModal();
+//     updateInnerModalUsingIndex(e.target.id);
+//     console.log(e.taget);
+//   });
+// });
 
 main.addEventListener("click", e => {
-  if ((e.target = card)) {
+  if (e.target.className == "card") {
     openModal();
     updateInnerModalUsingIndex(e.target.id);
   }
@@ -112,7 +124,7 @@ function closeModal() {
 }
 
 function clickOutside(e) {
-  if (e.target == modal) {
+  if (e.target.className == "modal") {
     modal.style.display = "none";
   }
 }
