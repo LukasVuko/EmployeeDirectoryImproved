@@ -89,12 +89,30 @@ const main = document.getElementById("main");
 const modal = document.getElementById("simpleModal");
 const closeBtn = document.getElementsByClassName("closeBtn")[0];
 
-const cardCollection = document.querySelectorAll(".card");
-
 // Event listeners
-// main.addEventListener("click", e => {
-//   console.log(event.target.className);
-// });
+
+main.addEventListener("click", e => {
+  let cardCollection = document.querySelectorAll(".card");
+  let array = [...cardCollection];
+  array.map((card, index) => {
+    card.addEventListener("click", () => {
+      openModal();
+      updateInnerModalUsingIndex(index);
+    });
+  });
+});
+
+// let listeners = [];
+// let addlisteners = () => {
+//   cardCollection = document.querySelectorAll(".card");
+//   let array = [...cardCollection];
+//   listeners = array.map((card, index) => {
+//     card.addEventListener("click", () => {
+//       openModal();
+//       updateInnerModalUsingIndex(index);
+//     });
+//   });
+// };
 
 // cardCollection.forEach(function(card) {
 //   card.addEventListener("click", e => {
@@ -104,12 +122,12 @@ const cardCollection = document.querySelectorAll(".card");
 //   });
 // });
 
-main.addEventListener("click", e => {
-  if (e.target.className == "card") {
-    openModal();
-    updateInnerModalUsingIndex(e.target.id);
-  }
-});
+// main.addEventListener("click", e => {
+//   if (e.target.className == "card") {
+//     openModal();
+//     updateInnerModalUsingIndex(e.target.id);
+//   }
+// });
 
 closeBtn.addEventListener("click", closeModal);
 window.addEventListener("click", clickOutside);
