@@ -1,9 +1,12 @@
+// ------------------------------------------------------------------------------------------------------------------------ //
 // CREATE EMPLOYEE TABLES //
-
+// ------------------------------------------------------------------------------------------------------------------------ //
 window.employeeTable = window.employeeTable || [];
 let employeeTable = window.employeeTable;
 
+// ------------------------------------------------------------------------------------------------------------------------ //
 // CREATE EMPLOYEE CLASS //
+// ------------------------------------------------------------------------------------------------------------------------ //
 class Employee {
   constructor(img, firstName, lastName, email, city, phone, address, birthday) {
     this.img = img;
@@ -16,6 +19,10 @@ class Employee {
     this.birthday = birthday;
   }
 }
+
+// ------------------------------------------------------------------------------------------------------------------------ //
+// FETCH upon loading the page
+// ------------------------------------------------------------------------------------------------------------------------ //
 
 // Steps //
 // 1) Fetch data for 12 users
@@ -65,7 +72,19 @@ function generateHTML(data) {
   main.innerHTML = textHTML.join("");
 }
 
-// MODAL ------------------------------------------------------------------------------------------------------ //
+// ------------------------------------------------------------------------------------------------------------------------ //
+// CAPITALIZE FUNCTION capitalize()
+// ------------------------------------------------------------------------------------------------------------------------ //
+String.prototype.capitalize = function() {
+  return this.replace(/(?:^|\s)\S/g, function(a) {
+    return a.toUpperCase();
+  });
+};
+
+// ------------------------------------------------------------------------------------------------------------------------ //
+// MODAL
+// ------------------------------------------------------------------------------------------------------------------------ //
+
 const main = document.getElementById("main");
 const modal = document.getElementById("simpleModal");
 const card = document.getElementsByClassName("card");
@@ -115,11 +134,3 @@ function updateInnerModalUsingIndex(index) {
   const birthday = document.getElementById("modal-birthday");
   birthday.innerText = employee.birthday;
 }
-
-// ------------------------------------------------------------------------------------------------------------------------ //
-// CAPITALIZE FUNCTION capitalize()
-String.prototype.capitalize = function() {
-  return this.replace(/(?:^|\s)\S/g, function(a) {
-    return a.toUpperCase();
-  });
-};
