@@ -33,12 +33,12 @@ function generateTable(data) {
     person =>
       new Employee(
         person.picture.large,
-        person.name.first,
-        person.name.last,
+        person.name.first.capitalize(),
+        person.name.last.capitalize(),
         person.email,
-        person.location.city,
+        person.location.city.capitalize(),
         person.phone,
-        person.location.street,
+        person.location.street.capitalize(),
         person.dob.date
       )
   );
@@ -47,9 +47,9 @@ function generateTable(data) {
 
 function generateHTML(data) {
   const main = document.getElementById("main");
-  let textHTML = data.map(person => {
+  let textHTML = data.map((person, index) => {
     let tag = `
-            <div class="card">
+            <div id="${index}" class="card">
             <img
              id="card-image"
              src="${person.img}"
@@ -64,3 +64,43 @@ function generateHTML(data) {
   });
   main.innerHTML = textHTML.join("");
 }
+
+// MODAL ------------------------------------------------------------------------------------------------------ //
+const main = document.getElementById("main");
+const modal = document.getElementById("simpleModal");
+const card = document.getElementsByClassName("card");
+const closeBtn = document.getElementsByClassName("closeBtn")[0];
+
+// Event listeners
+
+main.addEventListener("click", e => {
+  if ((e.target = card)) {
+    openModal();
+  }
+});
+
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", clickOutside);
+
+// Functions
+
+function openModal() {
+  modal.style.display = "block";
+}
+function closeModal() {
+  modal.style.display = "none";
+}
+
+function clickOutside(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// ------------------------------------------------------------------------------------------------------------------------ //
+// CAPITALIZE FUNCTION capitalize()
+String.prototype.capitalize = function() {
+  return this.replace(/(?:^|\s)\S/g, function(a) {
+    return a.toUpperCase();
+  });
+};
