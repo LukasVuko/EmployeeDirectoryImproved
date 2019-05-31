@@ -136,5 +136,5 @@ function updateInnerModalUsingIndex(index) {
   const address = document.getElementById("modal-address");
   address.innerText = employee.address;
   const birthday = document.getElementById("modal-birthday");
-  birthday.innerText = employee.birthday;
+  birthday.innerText = `Birthday: ${employee.birthday.substr(0, 10)}`;
 }
