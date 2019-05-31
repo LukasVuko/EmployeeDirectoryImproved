@@ -1,10 +1,54 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
-
+body {
+  background-color: #f5f6fa;
+}
 h2 {
   font-size: 1em;
 }
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card {
+  cursor: pointer;
+  border: grey 1px solid;
+  flex: 1;
+  margin: 1em auto;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  align-items: center;
+  border-radius: 5px;
+  margin: 1em;
+  background-color: white;
+  transition-duration: 0.7s;
+}
+.card:hover {
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+.card-inner > * {
+}
+#card-image {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+.card-inner {
+  padding-left: 1em;
+}
+
+span {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 2em;
+}
+
 .modal {
   position: fixed;
   display: none;
@@ -17,45 +61,26 @@ h2 {
 
 .modalContent {
   background-color: white;
-  width: 400px;
+  width: 350px;
   margin: 10em auto;
   position: relative;
-}
-
-main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.card {
-  cursor: pointer;
-  border: red solid 1px;
-  flex: 1;
-  margin: 1em auto;
-  display: flex;
-  flex-direction: row;
-  padding: 1em;
-  align-items: center;
   border-radius: 5px;
-  margin: 1em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
 }
-.card-inner > * {
-  border: red solid 1px;
-}
-#card-image {
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  border: red solid 1px;
-}
-.card-inner {
-  padding-left: 1em;
+.modal-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-span {
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 5px;
-  font-size: 2em;
+#modal-image {
+  border-radius: 50%;
+}
+
+hr {
+  width: 80%;
 }

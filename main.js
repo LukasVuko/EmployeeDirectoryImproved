@@ -21,7 +21,7 @@ class Employee {
 }
 
 // ------------------------------------------------------------------------------------------------------------------------ //
-// FETCH upon loading the page
+// FETCH Employee Data
 // ------------------------------------------------------------------------------------------------------------------------ //
 
 // Steps //
@@ -33,6 +33,7 @@ fetch("https://randomuser.me/api/?results=12")
   .then(res => res.json())
   .then(generateTable)
   .then(generateHTML)
+  .then(createEventHandlers)
   .catch(err => console.error(err));
 
 function generateTable(data) {
@@ -85,14 +86,17 @@ String.prototype.capitalize = function() {
 // MODAL
 // ------------------------------------------------------------------------------------------------------------------------ //
 
-const main = document.getElementById("main");
+// const main = document.getElementById("main");
 const modal = document.getElementById("simpleModal");
 const closeBtn = document.getElementsByClassName("closeBtn")[0];
 
 // Event listeners
 
-main.addEventListener("click", e => {
-  let cardCollection = document.querySelectorAll(".card");
+function createEventHandlers() {
+  closeBtn.addEventListener("click", closeModal);
+  window.addEventListener("click", clickOutside);
+
+  const cardCollection = document.querySelectorAll(".card");
   let array = [...cardCollection];
   array.map((card, index) => {
     card.addEventListener("click", () => {
@@ -100,37 +104,7 @@ main.addEventListener("click", e => {
       updateInnerModalUsingIndex(index);
     });
   });
-});
-
-// let listeners = [];
-// let addlisteners = () => {
-//   cardCollection = document.querySelectorAll(".card");
-//   let array = [...cardCollection];
-//   listeners = array.map((card, index) => {
-//     card.addEventListener("click", () => {
-//       openModal();
-//       updateInnerModalUsingIndex(index);
-//     });
-//   });
-// };
-
-// cardCollection.forEach(function(card) {
-//   card.addEventListener("click", e => {
-//     openModal();
-//     updateInnerModalUsingIndex(e.target.id);
-//     console.log(e.taget);
-//   });
-// });
-
-// main.addEventListener("click", e => {
-//   if (e.target.className == "card") {
-//     openModal();
-//     updateInnerModalUsingIndex(e.target.id);
-//   }
-// });
-
-closeBtn.addEventListener("click", closeModal);
-window.addEventListener("click", clickOutside);
+}
 
 // Functions
 
