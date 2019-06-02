@@ -46,12 +46,20 @@ function generateTable(data) {
         person.email,
         person.location.city.capitalize(),
         person.phone,
-        person.location.street.capitalize(),
+        person.location.street.capitalize() +
+          ", " +
+          person.location.city.capitalize() +
+          ", " +
+          person.location.state.capitalize() +
+          ", " +
+          person.location.postcode,
         person.dob.date
       )
   );
   return Promise.all(employeeTable);
 }
+
+// street name and number, city, state, and postcode
 
 function generateHTML(data) {
   const main = document.getElementById("main");
@@ -136,5 +144,7 @@ function updateInnerModalUsingIndex(index) {
   const address = document.getElementById("modal-address");
   address.innerText = employee.address;
   const birthday = document.getElementById("modal-birthday");
-  birthday.innerText = `Birthday: ${employee.birthday.substr(0, 10)}`;
+  birthday.innerText = new Date(
+    Date.parse(employee.birthday)
+  ).toLocaleDateString(navigator.location);
 }
